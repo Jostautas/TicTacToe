@@ -7,13 +7,17 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>TicTacToe with ASP.NET</p>
-    @for(int i = 0; i < 4; i++)
-    {
-        if(Model[i].State == true){
-        <p>TRUE</p>
-    }
-    else{
-        <p>FALSE</p>
-    }
+    @using(Html.BeginForm("HandleButtonClick", "Home")){
+        for(int i = 1; i <= Model.Count; i++)
+        {
+            <button type="submit" name="user" value="@i">
+                <span> @Model[i-1].State </span>
+            </button>
+
+            if(i % 3 == 0)
+            {
+                <br />
+            }
+        }
     }
 </div>

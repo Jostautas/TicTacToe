@@ -6,7 +6,7 @@ namespace TicTacToe.Controllers
 {
     public class HomeController : Controller
     {
-        List<ButtonModel> buttons = new List<ButtonModel>();
+        static List<ButtonModel> buttons =  new List<ButtonModel>();
 
         private readonly ILogger<HomeController> _logger;
 
@@ -17,10 +17,20 @@ namespace TicTacToe.Controllers
 
         public IActionResult Index()
         {
-            buttons.Add(new ButtonModel(true));
-            buttons.Add(new ButtonModel(true));
-            buttons.Add(new ButtonModel(false));
-            buttons.Add(new ButtonModel(true));
+            for(int i = 0; i < 9; i++)
+            {
+                buttons.Add(new ButtonModel('_'));
+            }
+            return View("Index", buttons);
+        }
+
+        public IActionResult HandleButtonClick(string user)
+        {
+            int buttonValue = Int32.Parse(user) - 1;
+            if(buttons[buttonValue].State == '_')
+            {
+                buttons[buttonValue].State = 'X';
+            }
             return View("Index", buttons);
         }
 

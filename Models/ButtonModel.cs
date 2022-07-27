@@ -2,9 +2,9 @@
 {
     public class ButtonModel
     {
-        public bool State { get; set; }
+        public char State { get; set; }
 
-        public ButtonModel(bool state)
+        public ButtonModel(char state)
         {
             State = state;
         }
