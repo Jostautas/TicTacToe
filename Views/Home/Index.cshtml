@@ -5,16 +5,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>TicTacToe with ASP.NET</p>
+    <h1 class="display-4">TicTacToe with ASP.NET</h1>
+
+    @using(Html.BeginForm("HandleRestart", "Home"))
+    {
+        <button type="submit" name="restart">
+            <p>Restart</p>
+        </button>
+    }
+
     @using(Html.BeginForm("HandleButtonClick", "Home")){
-        for(int i = 1; i <= Model.Count; i++)
+        for(int i = 0; i < 9; i++)
         {
             <button type="submit" name="user" value="@i">
-                <span> @Model[i-1].State </span>
+                <span> @Model[i].State </span>
             </button>
 
-            if(i % 3 == 0)
+            if( (i + 1) % 3 == 0)
             {
                 <br />
             }

@@ -1,0 +1,29 @@
+﻿@model List<TicTacToe.Models.ButtonModel>
+
+@{
+    ViewData["Title"] = "You won!";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Congratulations, YOU WON!</h1>
+    <br />
+
+    @using(Html.BeginForm("HandleRestart", "Home"))
+    {
+        <button type="submit" name="restart">
+            <p>Restart</p>
+        </button>
+    }
+    <br />
+    @for(int i = 0; i < 9; i++)
+    {
+        <button>
+            <span> @Model[i].State </span>
+        </button>
+
+        if( (i + 1) % 3 == 0)
+        {
+            <br />
+        }
+    }
+</div>
